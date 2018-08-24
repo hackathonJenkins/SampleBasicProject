@@ -1,0 +1,17 @@
+@Library('sfci-pipeline-sharedlib@jacoco') _
+import net.sfdc.dci.BuildUtils
+def envDef = [ buildImage: 'ops0-artifactrepo1-0-prd.data.sfdc.net/dci/centos-sfci-maven:0891c85' ]
+env.RELEASE_BRANCHES = ['master']
+
+executePipeline(envDef) {
+	
+	stage('Init') {
+		checkout scm
+		mavenInit()
+	}
+	
+	stage('Build') {
+		mavenBuild([maven_args: 'clean clover:setup test clover:aggregate clover:clover'])
+	}
+	
+}

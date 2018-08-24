@@ -1,0 +1,13 @@
+- 
+  source_branch: master
+  emails: arun.kaushik@salesforce.com
+  targets: 
+    - 
+      auto_merge: true
+      target_branch: t-1
+    - 
+      auto_merge: true
+      target_branch: t-2
+    - 
+      auto_merge: false
+      target_branch: t-3
